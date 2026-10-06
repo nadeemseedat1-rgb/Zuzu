@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>For Zuzu</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f2ec;--ink:#2b2a33;--soft:#6d6a78;--card:#fffdf9;--sage:#dfe8dc;--sky:#dce8f2;--lilac:#e6dff1;--peach:#f6e0d4;--shadow:0 10px 30px rgba(60,50,80,.08);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#f6f2ec;--ink:#2b2a33}}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{background:var(--bg);color:var(--ink);font-family:Figtree,system-ui,sans-serif;line-height:1.6;overflow-x:hidden}
+h1,h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400;line-height:1.1}
+h1{font-size:clamp(2.6rem,10vw,4.6rem)}h2{font-size:clamp(2rem,7vw,3.2rem);margin-bottom:1.6rem}
+#bar{position:fixed;top:env(safe-area-inset-top,0px);left:0;height:3px;width:0;background:linear-gradient(90deg,#b9cdb4,#b7c9e0,#cdbfe3);z-index:50;transition:width .2s}
+#intro{position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem;background:radial-gradient(circle at 30% 20%,#e6dff1 0,transparent 55%),radial-gradient(circle at 80% 80%,#dce8f2 0,transparent 55%),var(--bg);transition:opacity 1s,transform 1s,visibility 1s}
+#intro.gone{opacity:0;transform:scale(1.06);visibility:hidden}
+#intro p{color:var(--soft);font-size:1.15rem;opacity:0;animation:in 1s forwards}
+#intro h1{opacity:0;animation:in 1.2s .2s forwards}
+#intro p:nth-of-type(1){animation-delay:1.4s}#intro p:nth-of-type(2){animation-delay:2.4s}#intro button{opacity:0;animation:in 1s 3.4s forwards}
+@keyframes in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+button{font:inherit;cursor:pointer;border:0;border-radius:999px;background:var(--ink);color:#fff;padding:.9rem 1.7rem;margin-top:2rem;transition:transform .15s,box-shadow .2s;box-shadow:var(--shadow)}
+button:hover{box-shadow:0 12px 28px rgba(60,50,80,.25)}button:active{transform:scale(.94)}
+main{opacity:0;transition:opacity 1s .4s}main.on{opacity:1}
+section{display:flex;flex-direction:column;justify-content:center;padding:3.2rem max(1.4rem,calc((100% - 680px)/2));position:relative;overflow:hidden}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .8s,transform .8s}.rv.in{opacity:1;transform:none}
+.line{font-size:clamp(1.3rem,5vw,1.7rem);margin-bottom:1.1rem}.line.big{font-family:"Instrument Serif",serif;font-style:italic;font-size:clamp(1.9rem,7vw,2.6rem)}
+.grid{display:grid;gap:1rem}
+.card{background:var(--card);border-radius:24px;padding:1.4rem;box-shadow:var(--shadow);cursor:pointer;text-align:left;transition:transform .25s,box-shadow .25s;border:1px solid rgba(0,0,0,.04);user-select:none;-webkit-tap-highlight-color:transparent}
+.card:hover{transform:translateY(-3px) rotate(-.4deg)}
+.card b{font-size:1.05rem}.card .t{max-height:0;overflow:hidden;opacity:0;color:var(--soft);transition:max-height .5s,opacity .5s,margin .3s}
+.card.open .t{max-height:260px;opacity:1;margin-top:.7rem}
+.card small{display:block;color:var(--soft);margin-top:.2rem}
+.c1{background:var(--sage)}.c2{background:var(--sky)}.c3{background:var(--lilac)}.c4{background:var(--peach)}
+.end{margin-top:2rem;font-family:"Instrument Serif",serif;font-style:italic;font-size:1.7rem}
+.cat{font-size:3rem;display:inline-block;transition:transform .4s}.cat.go{animation:walk 1.6s ease}
+@keyframes walk{0%{transform:translateX(0)}40%{transform:translateX(60px) rotate(8deg)}70%{transform:translateX(-20px) rotate(-6deg)}100%{transform:none}}
+.spec{display:grid;grid-template-columns:auto 1fr;gap:.35rem .9rem;margin-top:.8rem;font-size:.95rem}.spec span:nth-child(odd){color:var(--soft)}
+.rand{background:linear-gradient(135deg,var(--lilac),var(--peach));padding:1.6rem}
+.rand p{font-family:"Instrument Serif",serif;font-size:1.6rem;line-height:1.25;margin:.8rem 0;min-height:4.6rem}
+.rand button{margin-top:.4rem;background:#fff;color:var(--ink);box-shadow:none;padding:.65rem 1.2rem}
+ul.list{list-style:none;padding:0;display:grid;gap:.9rem}
+ul.list li{padding:1rem 1.2rem;background:var(--card);border-radius:18px;box-shadow:var(--shadow)}
+ul.list li b{display:block}ul.list li span{color:var(--soft);font-size:.95rem}
+.soft{background:linear-gradient(#f6f2ec,#eceaf3 40%,#eceaf3 60%,#f6f2ec);max-width:none}
+.soft>div{max-width:620px;margin:0 auto;width:100%}
+.soft p{font-family:"Instrument Serif",serif;font-size:clamp(1.5rem,5.6vw,2rem);line-height:1.35;margin-bottom:1.6rem}
+.msg p{margin-bottom:1.1rem;font-size:1.08rem}.msg{background:var(--card);border-radius:28px;padding:1.8rem;box-shadow:var(--shadow)}
+.psst{font-size:.78rem;color:#b3afbd;cursor:pointer;margin-top:1.4rem;align-self:flex-start}
+.psst i{display:none;font-style:normal;color:var(--soft)}.psst.on i{display:inline}
+.fin{text-align:center;align-items:center}
+.fin .a{color:var(--soft)}
+#darling{padding:6rem 0 4rem;text-align:center;font-size:.8rem;color:#b9b5c4}
+section:nth-of-type(1){background:linear-gradient(160deg,#e6dff1,#f6e0d4)}
+section:nth-of-type(2){background:linear-gradient(160deg,#dce8f2,#e6dff1)}
+section:nth-of-type(3){background:linear-gradient(160deg,#f6e0d4,#dfe8dc)}
+section:nth-of-type(4){background:linear-gradient(160deg,#dfe8dc,#dce8f2)}
+section:nth-of-type(6){background:linear-gradient(160deg,#f6e0d4,#e6dff1)}
+section:nth-of-type(7){background:linear-gradient(160deg,#dce8f2,#dfe8dc)}
+section:nth-of-type(8){background:linear-gradient(160deg,#e6dff1,#f6e0d4 60%,#dce8f2)}
+section>*{position:relative;z-index:1}
+.stk{position:absolute!important;font-size:2.2rem;opacity:.55;animation:fl 6s ease-in-out infinite;z-index:0!important;pointer-events:none}
+@keyframes fl{50%{transform:translateY(-14px) rotate(8deg)}}
+.mq{overflow:hidden;white-space:nowrap;background:var(--ink);color:#f6f2ec;padding:.8rem 0;font-family:"Instrument Serif",serif;font-size:1.35rem;transform:rotate(-1.2deg);margin:-.5rem -1rem;position:relative;z-index:2}
+.mq div{display:inline-block;animation:mq 24s linear infinite}
+@keyframes mq{to{transform:translateX(-50%)}}
+h2{background:linear-gradient(90deg,#2b2a33,#6a5a9a);-webkit-background-clip:text;background-clip:text;color:transparent}
+.card{border:2px solid #fff;padding:1.6rem}.card b{font-size:1.2rem}
+.grid .card:nth-child(odd){transform:rotate(-.8deg)}.grid .card:nth-child(even){transform:rotate(.8deg)}
+.grid .card:hover{transform:translateY(-4px) rotate(0)}
+#cf{position:fixed;inset:0;pointer-events:none;z-index:200}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01s!important;transition-duration:.01s!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+
+<div id="intro">
+  <h1>Happy Birthday, Zuzu 🤍</h1>
+  <p>Okay… technically I'm a day late.</p>
+  <p>But I think you'll forgive me.</p>
+  <button id="open">Open your gift →</button>
+</div>
+
+<main id="main">
+
+<section>
+  <h2 class="rv">So… this is basically you.</h2>
+  <p class="line rv">You're genuinely one of the sweetest people I've met.</p>
+  <p class="line rv">You're also incredibly random sometimes.</p>
+  <p class="line rv">Like… impressively random.</p>
+  <p class="line big rv">And honestly? I like that about you.</p>
+</section>
+
+<div class="mq"><div>random as hell &nbsp;✦&nbsp; random as hell &nbsp;✦&nbsp; random as hell &nbsp;✦&nbsp; random as hell &nbsp;✦&nbsp; random as hell &nbsp;✦&nbsp; random as hell &nbsp;✦&nbsp; random as hell &nbsp;✦&nbsp; random as hell &nbsp;✦&nbsp; </div></div>
+
+<section>
+  <h2 class="rv">The Zuzu Randomness Department™</h2>
+  <p class="line rv" style="font-size:1rem;color:var(--soft)">Tap a file to open it.</p>
+  <div class="grid">
+    <div class="card c1 rv"><b>Random thought</b><div class="t">There's absolutely no way to predict what you're going to say next.</div></div>
+    <div class="card c2 rv"><b>Unexpected conversation</b><div class="t">Somehow a normal conversation with you can become about literally anything.</div></div>
+    <div class="card c3 rv"><b>Plot twist</b><div class="t">Just when I think I understand what's happening… nope.</div></div>
+  </div>
+  <p class="end rv">Please never become normal. It wouldn't suit you.</p>
+</section>
+
+<div class="mq"><div>whiskers approved &nbsp;✦&nbsp; whiskers approved &nbsp;✦&nbsp; whiskers approved &nbsp;✦&nbsp; whiskers approved &nbsp;✦&nbsp; whiskers approved &nbsp;✦&nbsp; whiskers approved &nbsp;✦&nbsp; whiskers approved &nbsp;✦&nbsp; whiskers approved &nbsp;✦&nbsp; </div></div>
+
+<section>
+  <h2 class="rv">Things that make you, you</h2>
+  <div class="grid">
+    <div class="card c4 rv" id="whiskers">
+      <span class="cat" id="cat">🐱</span> <b>Whiskers</b><small>The actual main character.</small>
+      <div class="t"><div class="spec"><span>Name</span><span>Whiskers</span><span>Job</span><span>Being a cat</span><span>Special skill</span><span>Probably judging everyone</span><span>Relationship to Zuzu</span><span>Owner? No. Let's be honest. Whiskers owns the house.</span></div></div>
+    </div>
+    <div class="card c2 rv"><b>🌙 Alone time</b><small>You actually enjoy your own company.</small><div class="t">And honestly, I think that's pretty cool.</div></div>
+    <div class="card c1 rv"><b>🫶 Good company</b><small>You like being around people too…</small><div class="t">…just the right people. Which makes it mean more when you're one of them.</div></div>
+    <div class="card c3 rv"><b>💭 Clear thoughts</b><small>When you know what you think, you make sure people know.</small><div class="t">No guessing, no decoding. Weirdly refreshing.</div></div>
+    <div class="card rand rv" style="cursor:default">
+      <b>🎲 Randomness</b><small>The main attraction. Not a flaw. A feature.</small>
+      <p id="rp">Press the button. Predict nothing.</p>
+      <button id="rb">Generate a Zuzu thought</button>
+    </div>
+  </div>
+  <div class="psst rv" id="psst">psst… tap me <i>Whiskers says hi. She's not impressed.</i></div>
+</section>
+
+<div class="mq"><div>sweet &nbsp;✦&nbsp; clear thoughts &nbsp;✦&nbsp; zero predictability &nbsp;✦&nbsp; sweet &nbsp;✦&nbsp; clear thoughts &nbsp;✦&nbsp; zero predictability &nbsp;✦&nbsp; sweet &nbsp;✦&nbsp; clear thoughts &nbsp;✦&nbsp; zero predictability &nbsp;✦&nbsp; sweet &nbsp;✦&nbsp; clear thoughts &nbsp;✦&nbsp; zero predictability &nbsp;✦&nbsp; sweet &nbsp;✦&nbsp; clear thoughts &nbsp;✦&nbsp; zero predictability &nbsp;✦&nbsp; sweet &nbsp;✦&nbsp; clear thoughts &nbsp;✦&nbsp; zero predictability &nbsp;✦&nbsp; sweet &nbsp;✦&nbsp; clear thoughts &nbsp;✦&nbsp; zero predictability &nbsp;✦&nbsp; sweet &nbsp;✦&nbsp; clear thoughts &nbsp;✦&nbsp; zero predictability &nbsp;✦&nbsp; </div></div>
+
+<section>
+  <h2 class="rv">Things I appreciate about you</h2>
+  <ul class="list">
+    <li class="rv"><b>Your kindness</b><span>It's real, and it's not for show.</span></li>
+    <li class="rv"><b>Your sweetness and your personality</b><span>Both hit different.</span></li>
+    <li class="rv"><b>Your randomness</b><span>Obviously.</span></li>
+    <li class="rv"><b>How you just be yourself</b><span>No performance.</span></li>
+    <li class="rv"><b>You make conversations interesting</b><span>I never know where they'll end up.</span></li>
+    <li class="rv"><b>Your independence</b><span>You're comfortable in your own space, and that's a strength.</span></li>
+    <li class="rv"><b>You still value the people you care about</b><span>Even with all that alone time.</span></li>
+    <li class="rv"><b>You make me feel better without trying</b><span>And that's a rare talent.</span></li>
+  </ul>
+</section>
+
+<section class="soft">
+  <div>
+    <h2 class="rv">You probably don't realize this…</h2>
+    <p class="rv">You probably don't realize how much you've impacted my life in a good way.</p>
+    <p class="rv">There have been days where I wasn't feeling like myself, and somehow a conversation with you could make things feel a little lighter.</p>
+    <p class="rv">Sometimes you didn't even have to do anything. Just having someone like you around made a difference.</p>
+    <p class="rv">You've given me laughs, random conversations, good memories, and moments that I genuinely appreciate.</p>
+    <p class="rv">I don't think I've ever properly told you that, so I wanted you to know.</p>
+  </div>
+</section>
+
+<section>
+  <h2 class="rv">Okay, one serious moment.</h2>
+  <div class="msg rv">
+    <p>Zuzu, I hope you know you're genuinely one of the sweetest people I've met. I appreciate the way you are, even the random parts, especially the random parts. You're someone who can be completely comfortable in your own world but still make the people around you feel appreciated.</p>
+    <p>You've genuinely made some of my days better without even knowing it, and I think that's something you should know. Your presence, your personality, our conversations, and even the completely random moments are things I genuinely appreciate.</p>
+    <p>I hope this next year brings you a lot of happiness, good memories, peace, and obviously more random moments that somehow turn into stories.</p>
+    <p style="margin:0">Don't change who you are just because the world expects you to make sense all the time. Being you suits you pretty well.</p>
+  </div>
+</section>
+
+<section style="align-items:center;text-align:center">
+  <button id="last" style="margin-top:0">One last thing…</button>
+  <div id="surprise" style="margin-top:2rem;min-height:7rem">
+    <p class="line big" id="s1" style="opacity:0;transition:opacity 1s">You're actually pretty cool, you know.</p>
+    <p class="line" id="s2" style="opacity:0;transition:opacity 1s 1.6s;color:var(--soft)">Don't let this compliment get to your head though.</p>
+  </div>
+</section>
+
+<section class="fin">
+  <p class="line rv a">Anyway…</p>
+  <h1 class="rv">Happy Birthday, Zuzu.</h1>
+  <p class="line big rv" style="margin-top:1.2rem">Stay sweet. Stay random. Stay you.</p>
+  <p class="rv a" style="max-width:420px">Here's to another year of questionable conversations and somehow making them memorable.</p>
+</section>
+
+<div id="darling">darling 😉</div>
+</main>
+
+<script>
+(function(){
+  var intro=document.getElementById('intro'),main=document.getElementById('main');
+  document.body.style.overflow='hidden';
+  document.getElementById('open').onclick=function(){
+    intro.classList.add('gone');main.classList.add('on');confetti();document.body.style.overflow='';window.scrollTo(0,0);
+  };
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){
+    if(e.isIntersecting){var el=e.target,sibs=el.parentNode.querySelectorAll('.rv'),i=Array.prototype.indexOf.call(sibs,el);
+      setTimeout(function(){el.classList.add('in')},Math.min(i,3)*150);io.unobserve(el);}
+  })},{threshold:.25});
+  document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+  document.querySelectorAll('.card:not(.rand)').forEach(function(c){
+    c.onclick=function(){c.classList.toggle('open')};
+  });
+  var cat=document.getElementById('cat');
+  function walk(){cat.classList.remove('go');void cat.offsetWidth;cat.classList.add('go')}
+  document.getElementById('whiskers').addEventListener('mouseenter',walk);
+  document.getElementById('whiskers').addEventListener('click',walk);
+  var thoughts=["Wait, what if penguins have favourite days of the week?","Okay but why does that sound like a plan?","I have a very strong opinion about this, and it came from nowhere.","Fun fact: I will now tell you something completely unrelated.","Sorry, I was thinking about something else. Anyway, hi.","Nobody asked, but here's my take.","Hold on. Different topic. Hear me out."];
+  var ti=-1,rp=document.getElementById('rp');
+  document.getElementById('rb').onclick=function(){
+    var n;do{n=Math.floor(Math.random()*thoughts.length)}while(n===ti);ti=n;
+    rp.style.opacity=0;setTimeout(function(){rp.textContent=thoughts[n];rp.style.transition='opacity .4s';rp.style.opacity=1},200);
+  };
+  document.getElementById('psst').onclick=function(){this.classList.toggle('on')};
+  document.getElementById('last').onclick=function(){
+    confetti();this.style.opacity=.35;this.disabled=true;
+    document.getElementById('s1').style.opacity=1;document.getElementById('s2').style.opacity=1;
+  };
+  function confetti(){var c=document.createElement('canvas');c.id='cf';c.width=innerWidth;c.height=innerHeight;document.body.appendChild(c);var x=c.getContext('2d'),cl=['#b9cdb4','#b7c9e0','#cdbfe3','#f3c9b3','#2b2a33'],p=[];for(var i=0;i<90;i++)p.push({x:innerWidth/2,y:innerHeight*.6,vx:(Math.random()-.5)*12,vy:-Math.random()*14-4,r:Math.random()*5+3,c:cl[i%5],a:Math.random()*6});var t=0;(function f(){x.clearRect(0,0,c.width,c.height);p.forEach(function(q){q.x+=q.vx;q.y+=q.vy;q.vy+=.35;q.a+=.2;x.fillStyle=q.c;x.fillRect(q.x,q.y,q.r*1.6,q.r*Math.sin(q.a)+q.r)});if(++t<130)requestAnimationFrame(f);else c.remove()})()}
+var st=[['🎲','✨','☁️'],['🎲','🌀','⚡'],['🐾','🌙','✨'],['🌿','☁️','✨'],['🌙','☁️'],['✨','🎲'],['🐱','✨','🎲'],['🐾','✨','🌙']];
+document.querySelectorAll('main section').forEach(function(s,i){(st[i]||[]).forEach(function(e,j){var x=document.createElement('span');x.className='stk';x.textContent=e;x.style.top=(6+j*30+Math.random()*10)+'%';x.style[j%2?'left':'right']=(2+Math.random()*6)+'%';x.style.animationDelay=(j*1.3)+'s';s.appendChild(x)})});
+  var bar=document.getElementById('bar');
+  function prog(){var h=document.documentElement.scrollHeight-innerHeight;bar.style.width=(h>0?scrollY/h*100:0)+'%'}
+  addEventListener('scroll',prog,{passive:true});prog();
+})();
+</script>
+</body>
+</html>
+```
